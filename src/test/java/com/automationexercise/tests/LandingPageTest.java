@@ -34,13 +34,13 @@ public class LandingPageTest {
         Assert.assertEquals(url, "https://automationexercise.com/");
     }
 
-//    @Test
-//    public void navigationMenu(String menuName)
-//    {
-//        String url =landingPage.menuNavigationHeaders("Home");
-//        Assert.assertEquals(url, "https://automationexercise.com/");
-//    }
-    @AfterTest
+    @Test
+    public void navigationMenu()
+    {
+        String url =landingPage.menuNavigationHeaders("Cart");
+        Assert.assertEquals(url, "https://automationexercise.com/view_cart");
+    }
+//    @AfterTest
     public void tearDown()
     {
         page.context().browser().close();
