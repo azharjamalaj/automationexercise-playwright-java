@@ -1,0 +1,37 @@
+package pages;
+
+import com.microsoft.playwright.Page;
+
+public class LandingPage {
+
+    Page page;
+    private String Home = "a[href='/']')";
+    private String Product = "a[href='/products']')";
+    private String Cart = "a[href='/view_cart']')";
+    private String SignUpLogin = "a[href='/login']')";
+    private String TestCases = "a[href='/test_cases']')";
+    private String ApiTesting= "a[href='/api_list']')";
+    private String VideoTutorial= "a[href='https://www.youtube.com/c/AutomationExercise']')";
+    private String Contactus= "a[href='/contact_us']')";
+
+    public LandingPage(Page page){
+        this.page = page;
+    }
+
+    public  String getLandingPageTitle()
+    {
+        return page.title();
+    }
+
+    public  String getUrl()
+    {
+        return page.url();
+    }
+
+    public String menuNavigationHeaders(String menu)
+    {
+       String navigationMenu= page.textContent(menu);
+       page.click(menu);
+       return navigationMenu;
+    }
+}
