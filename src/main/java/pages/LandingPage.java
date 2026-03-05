@@ -4,7 +4,7 @@ import com.microsoft.playwright.Page;
 
 public class LandingPage {
 
-    Page page;
+    private Page page;
     private String Home = "a[href='/']')";
     private String Product = "a[href='/products']')";
     private String Cart = "a[href='/view_cart']')";
@@ -32,6 +32,7 @@ public class LandingPage {
     {
        String navigationMenu= page.textContent(menu);
        page.click(menu);
+       page.goBack();
        return navigationMenu;
     }
 }

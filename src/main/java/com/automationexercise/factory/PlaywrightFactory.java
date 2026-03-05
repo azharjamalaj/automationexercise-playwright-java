@@ -13,7 +13,7 @@ public class PlaywrightFactory {
     Page page;
     public Page intiBrowser(String browserName)
     {
-        System.out.println("Enter the browser of your choice");
+        System.out.println("Launching browser");
 
         playwright = Playwright.create();
 
