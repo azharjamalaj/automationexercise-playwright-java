@@ -2,7 +2,12 @@ package com.automationexercise.factory;
 
 import com.microsoft.playwright.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.Properties;
 
 public class PlaywrightFactory {
 
@@ -11,9 +16,13 @@ public class PlaywrightFactory {
     BrowserContext browserContext;
 
     Page page;
-    public Page intiBrowser(String browserName)
+
+    Properties prop;
+    public Page intiBrowser(Properties prop)
     {
-        System.out.println("Launching browser");
+        String browserName = prop.getProperty("browser");
+
+        System.out.println("Launching browser" + browserName);
 
         playwright = Playwright.create();
 
@@ -35,7 +44,15 @@ public class PlaywrightFactory {
 
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://automationexercise.com/");
+        page.navigate(prop.getProperty("url"));
         return page;
+    }
+
+//    This method is used for initialized the property
+    public Properties properties_Initialization() throws IOException {
+        FileInputStream fs = new FileInputStream("./src/resources/com.automationexercise.config/config.properties");
+        prop = new Properties();
+        prop.load(fs);
+        return prop;
     }
 }

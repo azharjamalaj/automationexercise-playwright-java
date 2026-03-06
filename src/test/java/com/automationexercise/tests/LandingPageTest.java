@@ -1,24 +1,16 @@
 package com.automationexercise.tests;
 
+import com.automationexercise.base.BaseTest;
 import com.automationexercise.factory.PlaywrightFactory;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LandingPage;
 
-public class LandingPageTest {
-    PlaywrightFactory pf ;
-    Page page;
-    LandingPage landingPage;
-    @BeforeTest
-    public void setup()
-    {
-        pf = new PlaywrightFactory();
-        page =pf.intiBrowser("chromium");
-        landingPage = new LandingPage(page);
-    }
+public class LandingPageTest extends BaseTest {
 
     @Test
     public void getTheLandingPageTtile()
@@ -34,15 +26,27 @@ public class LandingPageTest {
         Assert.assertEquals(url, "https://automationexercise.com/");
     }
 
-    @Test
-    public void navigationMenu()
+    @Test(dataProvider = "navigationData")
+    public void navigationMenu(String menuOption)
     {
-        String url =landingPage.menuNavigationHeaders("Cart");
-        Assert.assertEquals(url, "https://automationexercise.com/view_cart");
+        String menuActual =landingPage.menuNavigationHeaders(menuOption);
+        System.out.println(menuActual);
+        Assert.assertTrue(menuActual.trim().contains(menuOption));
     }
-//    @AfterTest
-    public void tearDown()
+
+    @DataProvider
+    public Object[][] navigationData()
     {
-        page.context().browser().close();
+        return new Object[][]
+                {
+                        {"Home"},
+                        {"Product"},
+                        {"Cart"},
+                        {"SignUpLogin"},
+                        {"TestCases"},
+                        {"ApiTesting"},
+                        {"VideoTutorial"},
+                        {"Contactus"}
+                };
     }
 }

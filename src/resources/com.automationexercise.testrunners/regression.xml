@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="AutomationSuite PW Suite">
+
+    <test name="Automation Exercise Landing Page">
+
+        <classes>
+            <class name="com.automationexercise.tests.LandingPageTest"/>
+        </classes>
+    </test>
+
+</suite>

@@ -10,7 +10,7 @@ public class LandingPage {
     private String Home = "a[href='/']";
     private String Product = "a[href='/products']";
     private String Cart = "a[href='/view_cart']";
-    private String SignUpLogin = "a[href='/login']";
+    private String SignUpLogin = "a:has-text(' Signup / Login')";
     private String TestCases = "a[href='/test_cases']";
     private String ApiTesting= "a[href='/api_list']";
     private String VideoTutorial= "a[href='https://www.youtube.com/c/AutomationExercise']";
@@ -32,30 +32,81 @@ public class LandingPage {
 
     public String menuNavigationHeaders(String menu)
     {
-        String actualURL = null;
+        String actualMenu = null;
         switch(menu.toLowerCase()) {
             case "product":
-                page.textContent(Product);
+                actualMenu=page.textContent(Product);
                 page.waitForLoadState();
-                page.click(Product);
-                System.out.println(actualURL=page.url());
+//                page.click(Product);
+//                System.out.println(page.url());
 //                System.out.println(page.title());
 //                page.goBack();
                 break;
             case "cart":
-                page.textContent(Cart);
-                page.click(Cart);
-                System.out.println(actualURL=page.url());
-                System.out.println(page.title());
-                page.goBack();
+                actualMenu= page.textContent(Cart);
+                page.waitForLoadState();
+//                page.click(Cart);
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
+//                page.goBack();
+                break;
+            case "SignUpLogin":
+                actualMenu = page.textContent(SignUpLogin);
+                page.waitForLoadState();
+//                page.click(SignUpLogin);
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
+//                page.goBack();
+                break;
+            case "TestCases":
+                actualMenu= page.locator(TestCases).nth(0).textContent();
+                page.waitForLoadState();
+//                page.click(TestCases);
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
+//                page.goBack();
+                break;
+            case "ApiTesting":
+                actualMenu= page.textContent(ApiTesting);
+                page.waitForLoadState();
+//                page.click(ApiTesting);
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
+//                page.goBack();
+                break;
+            case "VideoTutorial":
+                actualMenu=page.textContent(VideoTutorial);
+                page.waitForLoadState();
+//                page.click(VideoTutorial);
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
+//                page.goBack();
+                break;
+
+            case "Contactus":
+                actualMenu= page.textContent(Contactus);
+                page.waitForLoadState();
+//                page.click(Contactus);
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
+//                page.goBack();
                 break;
             default:
-                page.textContent(Home);
-                System.out.println(actualURL=page.url());
-                System.out.println(page.url());
-                System.out.println(page.title());
+                actualMenu=page.locator(Home).nth(1).innerText();
+                page.waitForLoadState();
+//                System.out.println(page.url());
+//                System.out.println(page.url());
+//                System.out.println(page.title());
+//                page.waitForLoadState();
                 break;
         }
-        return actualURL;
+        System.out.println(actualMenu);
+        return actualMenu;
     }
 }
