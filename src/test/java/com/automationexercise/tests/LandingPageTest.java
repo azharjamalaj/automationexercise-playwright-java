@@ -1,14 +1,8 @@
 package com.automationexercise.tests;
-
 import com.automationexercise.base.BaseTest;
-import com.automationexercise.factory.PlaywrightFactory;
-import com.microsoft.playwright.Page;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.LandingPage;
 
 public class LandingPageTest extends BaseTest {
 
