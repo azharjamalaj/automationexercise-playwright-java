@@ -1,6 +1,7 @@
 package com.automationexercise.tests;
 
 import com.automationexercise.base.BaseTest;
+import com.automationexercise.constants.AppConstants;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -38,7 +39,7 @@ public class NewUserSignInTest extends BaseTest {
 
         String message = createAccountPage.verifyAccountCreatedMessage();
 
-        Assert.assertEquals(message,"Congratulations! Your new account has been successfully created!");
+        Assert.assertEquals(message, AppConstants.CREATE_ACCOUNT_CONFIRMATION);
 
         //  Click 'Continue' button
         homePage =  createAccountPage.clickContinue();
@@ -52,12 +53,12 @@ public class NewUserSignInTest extends BaseTest {
 
         //  Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         String dltConfirmation =deleteAccountPage.verifyAccountDeleteConfirmation();
-        Assert.assertEquals(dltConfirmation, "Account Deleted!");
+        Assert.assertEquals(dltConfirmation, AppConstants.DELETE_ACCOUNT_CONFIRMATION);
 
         String dltConfirmationMessage =deleteAccountPage.verifyAccountDeleteMessage();
-        Assert.assertEquals(dltConfirmationMessage, "Your account has been permanently deleted!");
+        Assert.assertEquals(dltConfirmationMessage, AppConstants.DELETE_ACCOUNT_MESSAGE);
 
         deleteAccountPage.clickContinue();
-        Assert.assertEquals(landingPage.getUrl(), "https://automationexercise.com/");
+        Assert.assertEquals(landingPage.getUrl(), prop.getProperty("url"));
     }
 }
