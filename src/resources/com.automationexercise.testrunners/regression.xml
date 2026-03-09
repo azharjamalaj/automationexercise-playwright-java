@@ -1,12 +1,19 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="AutomationSuite PW Suite">
+<suite name="AutomationSuite PW Suite" thread-count="2" parallel="tests" verbose="4">
 
+    <listeners>
+        <listener class-name="com.automationexercise.listlners.ExtentReportListener">
+        </listener>
+    </listeners>
+    <test name="Automation Exercise NewUser Signin Page">
+        <classes>
+            <class name="com.automationexercise.tests.NewUserSignInTest"/>
+        </classes>
+    </test>
     <test name="Automation Exercise Landing Page">
-
         <classes>
             <class name="com.automationexercise.tests.LandingPageTest"/>
         </classes>
     </test>
-
 </suite>

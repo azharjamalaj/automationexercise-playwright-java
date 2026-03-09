@@ -18,10 +18,8 @@ public class BaseTest {
     protected LandingPage landingPage;
     protected LoginPage loginPage;
     protected NewUserSignInPage newUserSignInPage;
-
     protected CreateAccountPage createAccountPage;
     protected DeleteAccountPage deleteAccountPage;
-
     protected HomePage homePage;
     @BeforeTest
     public void setup() throws IOException {
@@ -30,7 +28,6 @@ public class BaseTest {
         page =pf.intiBrowser(prop);
         landingPage = new LandingPage(page);
     }
-
     @AfterTest
     public void tearDown()
     {
