@@ -27,18 +27,19 @@ public class LoginPage {
         page.click(Btn_Login);
     }
 
-    public NewUserSignInPage signUpUser(){
+    public NewUserSignInPage signUpUser(String username, String email){
         // Enter name and email address
-        page.fill(InpTxt_Signup_Name, "azhar");
-        page.fill(InpTxt_Signup_Email,"azhar1@gmail.com");
+        page.fill(InpTxt_Signup_Name, username);
+        page.fill(InpTxt_Signup_Email,email);
 
         // Enter the signUp button
         page.click(Btn_Signup);
-        return  new NewUserSignInPage();
+        return  new NewUserSignInPage(page);
     }
 
     public boolean signUpUsersFieldIsVisible()
     {
+        page.waitForSelector(InpTxt_Signup_Email);
         return page.isVisible(InpTxt_Signup_Name);
     }
 

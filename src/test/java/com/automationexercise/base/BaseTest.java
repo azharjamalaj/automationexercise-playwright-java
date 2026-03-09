@@ -4,9 +4,7 @@ import com.automationexercise.factory.PlaywrightFactory;
 import com.microsoft.playwright.Page;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import pages.LandingPage;
-import pages.LoginPage;
-import pages.NewUserSignInPage;
+import pages.*;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -16,10 +14,15 @@ public class BaseTest {
     PlaywrightFactory pf ;
     Page page;
 
-    Properties prop;
+    protected Properties prop;
     protected LandingPage landingPage;
     protected LoginPage loginPage;
     protected NewUserSignInPage newUserSignInPage;
+
+    protected CreateAccountPage createAccountPage;
+    protected DeleteAccountPage deleteAccountPage;
+
+    protected HomePage homePage;
     @BeforeTest
     public void setup() throws IOException {
         pf = new PlaywrightFactory();
@@ -28,9 +31,9 @@ public class BaseTest {
         landingPage = new LandingPage(page);
     }
 
-//    @AfterTest
-//    public void tearDown()
-//    {
-//        page.context().browser().close();
-//    }
+    @AfterTest
+    public void tearDown()
+    {
+        page.context().browser().close();
+    }
 }
