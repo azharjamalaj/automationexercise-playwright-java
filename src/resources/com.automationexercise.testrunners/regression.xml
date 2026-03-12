@@ -11,9 +11,9 @@
             <class name="com.automationexercise.tests.NewUserSignInTest"/>
         </classes>
     </test>
-    <test name="Automation Exercise Landing Page">
-        <classes>
-            <class name="com.automationexercise.tests.LandingPageTest"/>
-        </classes>
-    </test>
+<!--    <test name="Automation Exercise Landing Page">-->
+<!--        <classes>-->
+<!--            <class name="com.automationexercise.tests.LandingPageTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

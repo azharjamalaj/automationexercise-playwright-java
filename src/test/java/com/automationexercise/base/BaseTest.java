@@ -21,11 +21,13 @@ public class BaseTest {
     protected CreateAccountPage createAccountPage;
     protected DeleteAccountPage deleteAccountPage;
     protected HomePage homePage;
+
     @BeforeTest
     public void setup() throws IOException {
         pf = new PlaywrightFactory();
         prop =pf.properties_Initialization();
         page =pf.intiBrowser(prop);
+        System.out.println("Page details" + page);
         landingPage = new LandingPage(page);
     }
     @AfterTest

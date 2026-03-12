@@ -43,7 +43,7 @@ public class PlaywrightFactory {
     {
         String browserName = prop.getProperty("browser");
 
-        System.out.println("Launching browser" + browserName);
+        System.out.println("Launching browser " + browserName);
 
 //        playwright = Playwright.create();
         tlPlaywright.set(Playwright.create());
@@ -76,6 +76,7 @@ public class PlaywrightFactory {
 
 //        page.navigate(prop.getProperty("url"));
         getPage().navigate(prop.getProperty("url"));
+        System.out.println(getPage().url());
         return getPage();
     }
 

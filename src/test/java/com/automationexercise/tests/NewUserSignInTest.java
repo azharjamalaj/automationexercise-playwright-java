@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 public class NewUserSignInTest extends BaseTest {
 
+    //    Test Case 1: Register User
     @Test
     public void newUserSignIn()
     {
@@ -61,4 +62,29 @@ public class NewUserSignInTest extends BaseTest {
         deleteAccountPage.clickContinue();
         Assert.assertEquals(landingPage.getUrl(), prop.getProperty("url"));
     }
+
+//    Test Case 5: Register User with existing email
+    @Test
+    public void registerWithExistingemail()
+    {
+    // Navigate to url 'http://automationexercise.com'
+    String url = landingPage.getUrl();
+    Assert.assertEquals(url, "https://automationexercise.com/", "Invalid url");
+
+    // Verify that home page is visible successfully
+    String title = landingPage.getLandingPageTitle();
+    Assert.assertEquals(title, "Automation Exercise", "Invalid homepage title");
+
+    // Click on 'Signup / Login' button
+    loginPage = landingPage.registerUser();
+
+    // Verify 'New User Signup!' is visible
+    Assert.assertTrue(loginPage.signUpUsersFieldIsVisible(),"Sign Up details is not visible");
+
+    //  Enter name and already registered email address
+    loginPage.signUpUser(prop.getProperty("username"),prop.getProperty("user-email"));
+
+    System.out.println(loginPage.alreadyEmailUsedErrorMessage());
+    Assert.assertEquals(loginPage.alreadyEmailUsedErrorMessage(),AppConstants.EMAIL_ALREADY_EXIST_MES,"Successfully register the next steps");
+}
 }

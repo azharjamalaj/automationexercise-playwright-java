@@ -25,11 +25,13 @@ public class LandingPage {
 
     public  String getUrl()
     {
+        System.out.println("Page details" + page);
         return page.url();
     }
 
     public LoginPage registerUser()
     {
+        System.out.println("Page details" + page);
         page.click(SignUpLogin);
         return new LoginPage(page);
     }
@@ -74,5 +76,10 @@ public class LandingPage {
         }
         System.out.println(actualMenu);
         return actualMenu;
+    }
+
+    public void landingPageURL(String url)
+    {
+        page.navigate(url);
     }
 }

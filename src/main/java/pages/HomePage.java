@@ -12,6 +12,7 @@ public class HomePage {
 
     public String Btn_Continue  = "a[data-qa='continue-button']";
 
+    public String Txt_Logout  = "a[href='/logout']";
     public HomePage(Page page)
     {
         this.page =page;
@@ -20,6 +21,12 @@ public class HomePage {
     public String verifyLoggedInUser()
     {
         return page.textContent(Txt_LoggedInAs);
+    }
+
+    public LandingPage clickLogout()
+    {
+        page.click(Txt_Logout);
+        return new LandingPage(page);
     }
 
     public DeleteAccountPage deleteAccount()
