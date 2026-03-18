@@ -1,5 +1,6 @@
 package pages;
 
+
 import com.microsoft.playwright.Page;
 
 public class LandingPage {
@@ -12,7 +13,7 @@ public class LandingPage {
     private String TestCases = "a[href='/test_cases']";
     private String ApiTesting= "a[href='/api_list']";
     private String VideoTutorial= "a[href='https://www.youtube.com/c/AutomationExercise']";
-    private String Contactus= "a[href='/contact_us']";
+    private String LNK_ContactUs= "a[href='/contact_us']";
 
     public LandingPage(Page page){
         this.page = page;
@@ -34,6 +35,12 @@ public class LandingPage {
         System.out.println("Page details" + page);
         page.click(SignUpLogin);
         return new LoginPage(page);
+    }
+
+    public ContactUsPage navigateToContactUSPage()
+    {
+        page.click(LNK_ContactUs);
+        return new ContactUsPage(page);
     }
 
     public String menuNavigationHeaders(String menu)
@@ -66,7 +73,7 @@ public class LandingPage {
                 break;
 
             case "Contactus":
-                actualMenu= page.textContent(Contactus);
+                actualMenu= page.textContent(LNK_ContactUs);
                 page.waitForLoadState();
                 break;
             default:

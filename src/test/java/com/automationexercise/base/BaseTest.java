@@ -21,6 +21,7 @@ public class BaseTest {
     protected CreateAccountPage createAccountPage;
     protected DeleteAccountPage deleteAccountPage;
     protected HomePage homePage;
+    protected ContactUsPage contactUsPage;
 
     @BeforeTest
     public void setup() throws IOException {
